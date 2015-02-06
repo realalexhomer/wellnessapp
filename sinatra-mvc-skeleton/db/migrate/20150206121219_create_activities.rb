@@ -7,6 +7,8 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :points, :default => 0
 
       t.references :user
+      t.references :category
+
     end
   end
 end
