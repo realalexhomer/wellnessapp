@@ -1,4 +1,45 @@
+
+
+
+
+
+
 /* CSS declarations go here */
+/*Header stuff */
+
+.header {
+    margin: 0 auto;
+    padding: 0px;
+    padding: 10px;
+    height: 120px;
+    background-color: #2ecc71;
+    font-size: 90px;
+    text-align: center;
+    border-bottom: 40px solid #27ae60;
+    margin-bottom: 5px;
+
+}
+
+
+.header_text {
+    font-family: 'Raleway', sans-serif;
+    color: #ecf0f1;
+    top: 30px;
+    vertical-align: middle;
+    position: relative;
+    display: inline-block;
+}
+
+.header_logo {
+    display:inline-block;
+    height: 100px;
+    top: 10px;
+    position: relative;
+}
+
+
+
+/*Zach stuff */
 body {font-family: Vollkorn; font-size: 160%; line-height: 160%; }
 h1, h2, h3, h4, h5, h6 {font-family: Georgia; line-height:100%; margin-top: 0.5em; margin-bottom: 0.5em; color: #36AECC; font-style: italic; font-weight: 400;}
 h1 {font-size: 1.8em;}
@@ -65,3 +106,4 @@ code {
     margin-left: -1em;
     overflow: auto;
 }
+
