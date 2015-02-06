@@ -33,7 +33,7 @@ post '/signup' do
 end
 
 ################# USER #################
-get "/users/:id"
+get "/users/:id" do
 	if current_user
 		erb :profile
 	else 
@@ -43,15 +43,15 @@ end
 
 ################# USER #################
 
-get "/add_activity"
+get "/add_activity" do
 	erb :add_activity
 end
 
-get "/users/:id/activity/new"
+get "/users/:id/activity/new" do
 	erb :new_form
 end
 
-post "/users/:id/activity/new"
+post "/users/:id/activity/new" do
 	redirect "/users/:id"
 end
 
