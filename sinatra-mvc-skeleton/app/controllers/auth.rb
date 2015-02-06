@@ -4,7 +4,7 @@ end
 
 ################# LOGIN #################
 get '/login' do
-	erb ######
+	erb :'auth/login' 
 end
 
 post '/login' do
@@ -19,25 +19,25 @@ end
 
 ################# SIGNUP #################
 get '/signup' do
-  	erb ######
+  	erb :'auth/signup'
 end
 
 post '/signup' do
 	user = User.create(params[:user])
 	if user.save 
 		session[:user_id] = user.id
-		redirect "/user/:id"
+		redirect "/users/#{user.id}"
 	else
-		redirect '/signup'
+		redirect 'auth/signup'
 	end
 end
 
 ################# USER #################
-get "/users/:id" do
+get '/users/:id' do
 	if current_user
 		erb :profile
 	else 
-		redirect "/login"
+		redirect "auth/login"
 	end
 end
 
@@ -52,7 +52,7 @@ get "/users/:id/activity/new" do
 end
 
 post "/users/:id/activity/new" do
-	redirect "/users/:id"
+	redirect "/users/#{params[:id]}"
 end
 
 ################# LOGOUT #################
