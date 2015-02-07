@@ -56,7 +56,7 @@ post "/users/:id/activity/new" do
 end
 
 ################# LOGOUT #################
-post '/logout' do
+get '/logout' do
 	logout_user
 	redirect '/'
 end
