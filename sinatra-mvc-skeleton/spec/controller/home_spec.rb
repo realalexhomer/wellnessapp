@@ -18,10 +18,10 @@ class UserSpec
 
       it 'should respond to /signup' do
       post '/signup', params={ user: {name: 'Derrick Wu', user_name: "popeye360", password_digest: "spinach", photo: "http://www.animationmagazine.net/wordpress/wp-content/uploads/Popeye-post-new1.jpg"}}
-      # expect(last_response).to be_redirect
-      # follow_redirect!
-      # expect( last_response.body).to include 'popeye360'
-      # expect( last_response.body).to include 'Derrick Wu'
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect( last_response.body).to include 'popeye360'
+      expect( last_response.body).to include 'Derrick Wu'
     end
   end
 end 
