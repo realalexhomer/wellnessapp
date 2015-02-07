@@ -24,7 +24,7 @@ end
 
 post '/signup' do
 	user = User.create(params[:user])
-	if user.save 
+	if user.save
 		session[:user_id] = user.id
 		redirect "/users/#{user.id}"
 	else
@@ -36,7 +36,7 @@ end
 get '/users/:id' do
 	if current_user
 		erb :profile
-	else 
+	else
 		redirect "auth/login"
 	end
 end
