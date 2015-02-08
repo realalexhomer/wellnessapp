@@ -15,7 +15,11 @@ require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+  config.after :all do
+    ActiveRecord::Base.subclasses.each(&:delete_all)
+  end
 end
+
 
 def app
   Sinatra::Application
