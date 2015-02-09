@@ -28,13 +28,14 @@ post '/signup' do
 		session[:user_id] = user.id
 		redirect "/users/#{user.id}"
 	else
-		redirect 'auth/signup'
+		redirect '/signup'
 	end
 end
 
 ################# USER #################
 get '/users/:id' do
 	if current_user
+		@user = User.find_by(id: params[:id])
 		erb :profile
 	else
 		redirect "auth/login"
@@ -43,17 +44,37 @@ end
 
 ################# USER #################
 
-get "/add_activity" do
+get "/add_activity/:id" do
+	@user = User.find_by(id: params[:id])
 	erb :add_activity
+end
+
+get "/users/:id/activity/:cat_id/new" do
+	@user = User.find_by(id: params[:id])
+	@category = Category.find_by(id: params[:cat_id])
+	erb :new_activity
+end
+
+post "/users/:id/activity/:cat_id/new" do
+	p params
+	@user = User.find_by(id: params[:id])
+	@category = Category.find_by(id: params[:cat_id])
+	activity = Activity.new(params[:activity])
+	puts "activity"
+	p activity
+	activity.category_id = @category.id
+	activity.user_id = @user.id
+	activity.save
+	puts "user id"
+	puts " user id"
+	p @user.id
+	redirect "/users/#{@user.id}"
 end
 
 get "/users/:id/activity/new" do
 	erb :new_form
 end
 
-post "/users/:id/activity/new" do
-	redirect "/users/#{params[:id]}"
-end
 
 ################# LOGOUT #################
 get '/logout' do
