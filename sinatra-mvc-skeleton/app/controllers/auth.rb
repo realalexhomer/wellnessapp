@@ -8,7 +8,7 @@ get '/login' do
 end
 
 post '/login' do
-	user = User.find_by(name: params[:user][:name])
+	user = User.find_by(name: params[:user][:user_name])
 	if user.try(:authenticate, params[:user][:password])
 		session[:user_id] = user.id
 		redirect "/user/#{user.id}"
@@ -60,7 +60,7 @@ post "/users/:id/activity/new" do
 end
 
 ################# LOGOUT #################
-post '/logout' do
+get '/logout' do
 	logout_user
 	redirect '/'
 end

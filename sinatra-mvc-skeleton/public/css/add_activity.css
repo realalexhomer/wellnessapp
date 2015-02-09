@@ -1,0 +1,24 @@
+
+
+
+ .top_row{
+    text-decoration: bold;
+  }
+
+  table{
+    text-align: center;
+    position: relative;
+    left: 20%;
+  }
+
+  a:hover {
+    color: blue;
+    text-decoration: none;
+  }
+
+  footer{
+    position: relative;
+    width: 100%;
+    background-color: grey;
+    bottom: 0px;
+  }
