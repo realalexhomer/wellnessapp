@@ -1,6 +1,6 @@
 
     <img src="">
-    <h1>WELCOME <%= @user.name %>!</h1>
+    <h1>WELCOME <%= @user.user_name %>!</h1>
     <br>
     <% @user.activities.each do |a| %>
     <h2><%= a.title %></h2><h3><%=a.points%> points</h3><h3><%= a.description %></h3> <br>
