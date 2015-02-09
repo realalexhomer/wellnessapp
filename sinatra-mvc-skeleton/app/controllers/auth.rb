@@ -4,11 +4,11 @@ end
 
 ################# LOGIN #################
 get '/login' do
-	erb :'auth/login' 
+	erb :'auth/login'
 end
 
 post '/login' do
-	user = User.find_by(name: params[:user][:name])
+	user = User.find_by(name: params[:user][:user_name])
 	if user.try(:authenticate, params[:user][:password])
 		session[:user_id] = user.id
 		redirect "/users/#{user.id}"
@@ -24,7 +24,7 @@ end
 
 post '/signup' do
 	user = User.create(params[:user])
-	if user.save 
+	if user.save
 		session[:user_id] = user.id
 		redirect "/user/#{user.id}"
 	else
@@ -36,7 +36,7 @@ end
 get '/user/:id' do
 	if current_user
 		erb :profile
-	else 
+	else
 		redirect "auth/login"
 	end
 end
