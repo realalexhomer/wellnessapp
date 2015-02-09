@@ -11,7 +11,7 @@ post '/login' do
 	user = User.find_by(name: params[:user][:name])
 	if user.try(:authenticate, params[:user][:password])
 		session[:user_id] = user.id
-		redirect "/user/#{user.id}"
+		redirect "/users/#{user.id}"
 	else
 		redirect "/signup"
 	end
@@ -26,14 +26,14 @@ post '/signup' do
 	user = User.create(params[:user])
 	if user.save 
 		session[:user_id] = user.id
-		redirect "/users/#{user.id}"
+		redirect "/user/#{user.id}"
 	else
 		redirect 'auth/signup'
 	end
 end
 
 ################# USER #################
-get '/users/:id' do
+get '/user/:id' do
 	if current_user
 		erb :profile
 	else 
@@ -47,16 +47,16 @@ get "/add_activity" do
 	erb :add_activity
 end
 
-get "/users/:id/activity/new" do
+get "/user/:id/activity/new" do
 	erb :new_form
 end
 
-post "/users/:id/activity/new" do
-	redirect "/users/#{params[:id]}"
+post "/user/:id/activity/new" do
+	redirect "/user/#{params[:id]}"
 end
 
 ################# LOGOUT #################
 post '/logout' do
-	logout_user
+	session.delete(:user_id)
 	redirect '/'
 end
