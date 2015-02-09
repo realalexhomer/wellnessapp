@@ -6,6 +6,3 @@ def current_user
   end
 end
 
-def logout_user
-	session.delete(:user_id)
-end
