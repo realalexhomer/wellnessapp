@@ -34,7 +34,8 @@ end
 
 ################# USER #################
 get '/users/:id' do
-	if current_user
+	@user = current_user
+ 	if @user
 		erb :profile
 	else
 		redirect "auth/login"
@@ -44,14 +45,17 @@ end
 ################# USER #################
 
 get "/add_activity" do
+	@user = current_user
 	erb :add_activity
 end
 
 get "/users/:id/activity/new" do
+	@pillars = Alignment.all
 	erb :new_form
 end
 
 post "/users/:id/activity/new" do
+	# Aligment.find(params[pillar][id])
 	redirect "/users/#{params[:id]}"
 end
 
