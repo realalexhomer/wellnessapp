@@ -4,7 +4,7 @@ end
 
 ################# LOGIN #################
 get '/login' do
-	erb :'auth/login' 
+	erb :'auth/login'
 end
 
 post '/login' do
@@ -24,7 +24,7 @@ end
 
 post '/signup' do
 	user = User.create(params[:user])
-	if user.save 
+	if user.save
 		session[:user_id] = user.id
 		redirect "/users/#{user.id}"
 	else
@@ -34,9 +34,10 @@ end
 
 ################# USER #################
 get '/users/:id' do
-	if current_user
+	@user = current_user
+ 	if @user
 		erb :profile
-	else 
+	else
 		redirect "auth/login"
 	end
 end
@@ -44,14 +45,17 @@ end
 ################# USER #################
 
 get "/add_activity" do
+	@user = current_user
 	erb :add_activity
 end
 
 get "/users/:id/activity/new" do
+	@pillars = Alignment.all
 	erb :new_form
 end
 
 post "/users/:id/activity/new" do
+	# Aligment.find(params[pillar][id])
 	redirect "/users/#{params[:id]}"
 end
 

@@ -21,6 +21,7 @@ group :test do
   gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
+  # gem 'nokogiri', '~>1.6.2.1'
 end
 
 group :test, :development do
