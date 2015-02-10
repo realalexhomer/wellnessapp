@@ -1,3 +1,8 @@
+# If you want to keep all these routes in one file, I would name it app.rb.
+#
+# As your app grows, you will eventually want to break out user.rb and
+# activity.rb. ~ ash.
+
 get '/' do
   erb :welcome
 end
@@ -55,6 +60,9 @@ get "/users/:id/activity/:cat_id/new" do
 	erb :new_activity
 end
 
+# I think if you want to use nested routes, a more sensible organization would be,
+# /users/:user_id/categories/:category_id/activities/new
+#   ~ ash.
 post "/users/:id/activity/:cat_id/new" do
 	p params
 	@user = User.find_by(id: params[:id])
@@ -62,6 +70,8 @@ post "/users/:id/activity/:cat_id/new" do
 	activity = Activity.new(params[:activity])
 	puts "activity"
 	p activity
+	# NoMethodError - undefined method `category_id=' for #<Activity:0x007ff78a5bf250>
+	#   ~ ash.
 	activity.category_id = @category.id
 	activity.user_id = @user.id
 	activity.save

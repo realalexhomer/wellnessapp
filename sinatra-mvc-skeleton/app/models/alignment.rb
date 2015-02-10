@@ -1,3 +1,5 @@
+# TODO: validations
+#   ~ ash.
 class Alignment < ActiveRecord::Base
   # Remember to create a migration!
   has_many :categories
