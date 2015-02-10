@@ -6,6 +6,8 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :points
 
       t.references :user
+      # You need this: ~ ash.
+      t.references :category
     end
   end
 end
